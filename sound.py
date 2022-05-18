@@ -7,10 +7,18 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUZZER_pin, GPIO.OUT)
 
 pwm = GPIO.PWM(BUZZER_pin, 262)
-pwm.start(50)
+pwm.start(99)
 
-time.sleep(2)
-pwm.ChangeDutyCycle(0)
+melody = [392, 494, 660, 880, 1174]
 
-pwm.stop()
-GPIO.cleanup()
+try:
+    for i in melody:
+        pwm.ChangeFrequency(i)
+        time.sleep(0.5)
+
+finally:
+    pwm.stop()
+    GPIO.cleanup()
+
+
+
