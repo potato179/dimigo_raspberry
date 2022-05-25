@@ -12,11 +12,16 @@ pwm.start(99)
 
 i = 1
 
-while 1:
-    pwm.ChangeFrequency(i+1)
-    print(i+1)
-    if keyboard.is_pressed(80):
-        i -= 1
+try:
+    while 1:
+        pwm.ChangeFrequency(i+1)
+        print(i+1)
+        if keyboard.is_pressed(80):
+            i -= 1
 
-    if keyboard.is_pressed(72):
-        i += 1
+        if keyboard.is_pressed(72):
+            i += 1
+
+finally:
+    pwm.stop()
+    GPIO.cleanup()
