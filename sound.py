@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-import keyboard
 import time
 
 BUZZER_pin = 12
@@ -10,18 +9,12 @@ GPIO.setup(BUZZER_pin, GPIO.OUT)
 pwm = GPIO.PWM(BUZZER_pin, 262)
 pwm.start(99)
 
-i = 1
+for i in range(1000000):
+    pwm.ChangeFrequency(i+1)
+    print(i+1)
+    time.sleep(0.00001)
 
-try:
-    while 1:
-        pwm.ChangeFrequency(i+1)
-        print(i+1)
-        if keyboard.is_pressed(80):
-            i -= 1
-
-        if keyboard.is_pressed(72):
-            i += 1
-
-finally:
-    pwm.stop()
-    GPIO.cleanup()
+for i in range(1000000):
+    pwm.ChangeFrequency(1000000-i)
+    print(1000000-i)
+    time.sleep(0.00001)
