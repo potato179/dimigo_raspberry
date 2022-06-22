@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-SEGMENT_PINS = [2, 3, 4, 5, 6, 7, 8]
+SEGMENT_PINS = [3, 4, 5, 6, 7, 12, 13]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
