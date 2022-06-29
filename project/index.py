@@ -3,7 +3,7 @@ import time
 
 TRIG_PIN = 4
 ECHO_PIN = 17  
-led_pin = 27
+led_pin = 21
 buzzer_pin = 22
 
 GPIO.setmode(GPIO.BCM)
