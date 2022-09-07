@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread("haengsin.jpg")
+img = cv2.imread("haengsin.jpeg")
 img = cv2.resize(img, (600, 400))
 
 cv2.imshow("haengsin", img)
