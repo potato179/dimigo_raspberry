@@ -13,7 +13,7 @@ while True:
     ret,frame = cap.read()
     if not ret:
         break
-    img2 = cv2.resize(frame,(200, 150))
+    img2 = cv2.resize(frame,(640, 360))
 
     gray=cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
     edge=cv2.Canny(img2,100,150)
