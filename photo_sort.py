@@ -2,7 +2,7 @@ from pydoc import classname
 import cv2
 import numpy as np
 
-model = "./dnn/bvlc_googlement.caffemodel"
+model = "./dnn/bvlc_googlenet.caffemodel"
 config = "./dnn/deploy.prototxt"
 classFile = "./dnn/classification_classes_ILSVRC2012.txt"
 
@@ -13,10 +13,10 @@ with open(classFile, "rt") as f:
 net = cv2.dnn.readNet(model, config)
 img = cv2.imread("gay.jpg")
 
-blob = cv2.dnn.blobFromImage(img, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
+blob = cv2.dnn.blobFromImage(img, scalefactor = 1, size = (160, 90), mean = (104, 117, 123))
 
 net.setInput(blob)
-detections = net.foward()
+detections = net.forward()
 
 out = detections.flatten()
 classId = np.argmax(out)
