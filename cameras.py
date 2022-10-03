@@ -3,7 +3,6 @@ import cv2
 fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 out = cv2.VideoWriter('output.avi',fourcc,30,(640,480))
 
-
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     print('Camera open failed')
