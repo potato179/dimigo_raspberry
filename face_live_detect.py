@@ -23,6 +23,7 @@ while True:
         # 원본이미지에 얼굴 위치 표시
         # (x,y) 에서 시작, 끝점(x+가로), (y+세로), BGR색, 굵기 2
         cv2.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 2)
+        print(x, y, w, h)
 
     cv2.imshow('img', frame)
     if cv2.waitKey(10) == 27:
