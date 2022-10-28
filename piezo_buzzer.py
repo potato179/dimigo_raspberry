@@ -1,7 +1,8 @@
+'''
 import RPi.GPIO as GPIO
 import time
 
-BUZZER_PIN = 12
+BUZZER_PIN = 2
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUZZER_PIN, GPIO.OUT)
@@ -12,5 +13,18 @@ time.sleep(2)
 pwm.ChangeDutyCycle(0)
  
 pwm.stop()
+
+GPIO.cleanup()
+'''
+
+import RPi.GPIO as GPIO
+import time
+
+BUZZER_PIN = 2
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUZZER_PIN, GPIO.OUT)
+
+GPIO.output(BUZZER_PIN, 1)
 
 GPIO.cleanup()

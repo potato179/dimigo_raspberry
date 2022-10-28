@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return '''<p>Hello, Flask!</p>
+    return '''<p>Flask, trash!</p>
         <a href = '/led/on'> on</a>
         <a href = '/led/off'> off</a>
         <a href = '/asdf'> asdf</a>
