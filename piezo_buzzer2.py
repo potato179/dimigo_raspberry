@@ -6,7 +6,7 @@ BUZZER_PIN = 12
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUZZER_PIN, GPIO.OUT)
 
-pwm = GPIO.PWM(BUZZER_PIN, 1)  #주파수 1
+pwm = GPIO.PWM(BUZZER_PIN, 1) #주파수 1
 pwm.start(90)
 
 scale = [1, 262, 294, 330, 349, 392, 440, 494]
