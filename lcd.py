@@ -211,6 +211,7 @@ try:
             time.sleep(0.07)
 
         time.sleep(0.1)
+        
 finally:
     print("Cleaning Up!")
     display.lcd_clear()
