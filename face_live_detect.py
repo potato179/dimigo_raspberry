@@ -27,6 +27,8 @@ while True:
             print("True")
         else:
             print("False")
+        
+    print(faces)
 
     cv2.imshow('img', frame)
     if cv2.waitKey(10) == 27:

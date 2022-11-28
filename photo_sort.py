@@ -1,39 +1,51 @@
-from pydoc import classname
+# 이미지 분류(Image Classification)
+
 import cv2
 import numpy as np
 
-model = "./dnn/bvlc_googlenet.caffemodel"
-config = "./dnn/deploy.prototxt"
-classFile = "./dnn/classification_classes_ILSVRC2012.txt"
+# model, config, classFile 설정
+model = './dnn/bvlc_googlenet.caffemodel'
+config = './dnn/deploy.prototxt'
+classFile = './dnn/classification_classes_ILSVRC2012.txt'
+
+cap = cv2.VideoCapture(0)
 
 classNames = None
-with open(classFile, "rt") as f:
-    classNames = f.read().rstrip("\n").split("\n")
+with open(classFile, 'rt') as f:
+    classNames = f.read().rstrip('\n').split('\n')
 
+# Load a pre-trained neural network
 net = cv2.dnn.readNet(model, config)
-img1 = cv2.imread("fuck.png")
-img2 = cv2.imread("fuck.png")
-img3 = cv2.imread("fuck.png")
 
-blob1 = cv2.dnn.blobFromImage(img1, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
-blob2 = cv2.dnn.blobFromImage(img2, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
-blob3 = cv2.dnn.blobFromImage(img3, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
 
-net.setInput(blob1)
-net.setInput(blob2)
-net.setInput(blob3)
-detections = net.forward()
+while True :
+# 이미지 파일 읽기
+    _, frame = cap.read()
+    if frame is None:
+        break
 
-out = detections.flatten()
-classId = np.argmax(out)
-confidence = out[classId]
+    img = cv2.resize(frame, (300, 300))
 
-text = "%s (%4.2f%%)" % (classNames[classId], confidence * 100)
-img = cv2.resize(img, (600, 400))
-cv2.putText(img, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 1, cv2.LINE_AA)
+    # blob 이미지 생성
+    blob = cv2.dnn.blobFromImage(img, scalefactor=1, size=(224, 224), mean=(104, 117, 123))
 
-cv2.imshow("img", img1)
-cv2.imshow("img", img2)
-cv2.imshow("img", img3)
-cv2.waitKey(0)
+    # blob 이미지를 네트워크 입력으로 설정
+    net.setInput(blob)
+
+    # 네트워크 실행 (순방향)
+    detections = net.forward()
+
+    # 가장 높은 값을 가진 클래스 얻기
+    out = detections.flatten()
+    classId = np.argmax(out)
+    confidence = out[classId]
+
+    # 분류 결과 출력
+    text = '%s (%4.2f%%)' % (classNames[classId], confidence * 100)
+    cv2.putText(img, text, (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 1, cv2.LINE_AA)
+
+    cv2.imshow('img', img)
+    if cv2.waitKey(10) == 27 :
+        break
 cv2.destroyAllWindows()
