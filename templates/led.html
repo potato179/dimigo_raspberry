@@ -9,18 +9,28 @@
 <body>
     <p>오옹!</p>
     <a href = "/">gayjoygo~</a><br>
-    <button onclick = "led_on()">LED ON</button>
-    <button onclick = "led_off()">LED OFF</button>
+    <button onclick = "red_led_on()">RED LED ON</button>
+    <button onclick = "red_led_off()">RED LED OFF</button><br>
+    <button onclick = "blue_led_on()">BLUE LED ON</button>
+    <button onclick = "blue_led_off()">BLUE LED OFF</button><br>
     <p id = "led_stat">LED OFF</p>
     <iframe width="1424" height="546" src="https://www.youtube.com/embed/eIVnOIVt5qA?autoplay=1&mute=1" title = "moongtange" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <script>
-        function led_on(){
-            document.getElementById("led_stat").innerHTML = "LED ON";
+        function red_led_on(){
+            document.getElementById("led_stat").innerHTML = "RED LED ON";
         }
 
-        function led_off(){
-            document.getElementById("led_stat").innerHTML = "LED OFF";
+        function red_led_off(){
+            document.getElementById("led_stat").innerHTML = "RED LED OFF";
+        }
+
+        function blue_led_on(){
+            document.getElementById("led_stat").innerHTML = "RED LED ON";
+        }
+
+        function blue_led_off(){
+            document.getElementById("led_stat").innerHTML = "RED LED OFF";
         }
     </script>
 </body>
