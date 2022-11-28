@@ -198,16 +198,16 @@ try:
         #display.lcd_display_string("   WELCOME   ", 2)
         #time.sleep(2)
 
-    #str = '#include <stdio.h> int main() { printf("Hello world"); return 0; }'
-    # str = '     {0x06}{0x02}-{0x05}{0x07}{0x08}-{0x09}{0x10}{0x11}-{0x12}{0x03}{0x11}{0x13}-{0x09}{0x14}-{0x15}{0x16}-{0x17}{0x06}-{0x04}{0x05}{0x04}  '
+    #str = "#include <stdio.h> int main() { printf("Hello world"); return 0; }"
+    # str = "     {0x06}{0x02}-{0x05}{0x07}{0x08}-{0x09}{0x10}{0x11}-{0x12}{0x03}{0x11}{0x13}-{0x09}{0x14}-{0x15}{0x16}-{0x17}{0x06}-{0x04}{0x05}{0x04}  "
     str = "     Ulsan-Singyeongju-Dongdaegu-GimcheonGumi-Daejeon-Gwangmyeong-Seoul-Haengshin     "
-    display.lcd_display_extended_string('14:30|{0x04}{0x05}|KTX|040', 1)
+    display.lcd_display_extended_string("14:30|{0x04}{0x05}|KTX|040", 1)
 
     while True:
         for i in range(-15, len(str) + 15):
-            display.lcd_display_string('                ', 2)
+            display.lcd_display_string("                ", 2)
             time.sleep(0.01)
-            display.lcd_display_string(' ' * max(-i, 0) + str[max(i, 0):min(i+15, len(str))] + ' ', 2)
+            display.lcd_display_string(" " * max(-i, 0) + str[max(i, 0):min(i+15, len(str))] + " ", 2)
             time.sleep(0.07)
 
         time.sleep(0.1)
