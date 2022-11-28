@@ -11,11 +11,17 @@ with open(classFile, "rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
 net = cv2.dnn.readNet(model, config)
-img = cv2.imread("haengsin.jpeg")
+img1 = cv2.imread("fuck.png")
+img2 = cv2.imread("fuck.png")
+img3 = cv2.imread("fuck.png")
 
-blob = cv2.dnn.blobFromImage(img, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
+blob1 = cv2.dnn.blobFromImage(img1, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
+blob2 = cv2.dnn.blobFromImage(img2, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
+blob3 = cv2.dnn.blobFromImage(img3, scalefactor = 1, size = (224, 224), mean = (104, 117, 123))
 
-net.setInput(blob)
+net.setInput(blob1)
+net.setInput(blob2)
+net.setInput(blob3)
 detections = net.forward()
 
 out = detections.flatten()
@@ -26,6 +32,8 @@ text = "%s (%4.2f%%)" % (classNames[classId], confidence * 100)
 img = cv2.resize(img, (600, 400))
 cv2.putText(img, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 1, cv2.LINE_AA)
 
-cv2.imshow("img", img)
+cv2.imshow("img", img1)
+cv2.imshow("img", img2)
+cv2.imshow("img", img3)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
