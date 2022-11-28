@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>오옹!</p>
+    <a href = "/">gayjoygo~</a><br>
+    <button onclick = "led_on()">LED ON</button>
+    <button onclick = "led_off()">LED OFF</button>
+    <p id = "led_stat">LED OFF</p>
+    <iframe width="1424" height="546" src="https://www.youtube.com/embed/eIVnOIVt5qA?autoplay=1&mute=1" title = "moongtange" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <script>
+        function led_on(){
+            document.getElementById("led_stat").innerHTML = "LED ON";
+        }
+
+        function led_off(){
+            document.getElementById("led_stat").innerHTML = "LED OFF";
+        }
+    </script>
+</body>
+</html>
